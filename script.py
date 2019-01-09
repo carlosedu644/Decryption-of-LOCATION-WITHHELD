@@ -1,15 +1,25 @@
 # Decryption of the key word of the horror mini game Location WITHHELD
-#By: Carlos Eduardo Veron
+# By: Carlos Eduardo Veron
 
 word = ['c', 'w', 'x', '2', '3', 'b']
 
 
-def alphabet(letter):
-    return {
+def alphabet_map():
+    alpha = {
         'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12,
         'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23,
         'x': 24, 'y': 25, 'z': 26,
-    }[letter]
+    }
+    return alpha
+
+
+def alphabet(phrase):
+    return alphabet_map()[phrase]
+
+
+def inv_alphabet_map(phrase):
+    inv_map = {v: k for k, v in alphabet_map().items()}
+    return inv_map[phrase]
 
 
 def decryption(num):
@@ -21,6 +31,7 @@ def decryption(num):
         46: 't', 47: 'u', 48: 'v', 49: 'w', 50: 'x', 51: 'y', 52: 'z',
 
     }[num]
+
 
 def num_decryption(num):
     return {
@@ -46,7 +57,7 @@ def main():
             if not flag:
                 merged_decrypted = int(str(num_decryption(word[n])) + str(num_decryption(word[n + 1])))
                 merged_num = int(str(word[n]) + str(word[n + 1]))
-                print(merged_decrypted+merged_num)
+                print(merged_decrypted + merged_num)
                 flag = True
 
         else:
